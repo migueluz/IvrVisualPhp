@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" application="root.vxml">
+  <form>
+    <block>
+      <assign name="id" expr="telephone.id"/>
+      <assign name="param" expr="telephone.param"/>
+      <assign name="caller" expr="session.connection.remote.uri"/>
+      <assign name="called" expr="session.connection.local.uri "/>
+      <submit next="Welcome.php" method="post" namelist="id param caller called"/>
+    </block>
+  </form>
+</vxml>

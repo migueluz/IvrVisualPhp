@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES" >
+  <property name="prompturl" value="http://ivr.i6net.org/tts/baratinoo/tts.php"/>
+  <property name="promptformat" value="wav"/>
+  <property name="inputmodes" value="dtmf voice"/>
+  <property name="bargein" value="true"/>
+  <property name="fetchtimeout" value="30s"/>
+  <property name="fetchaudiodelay" value="5s" />
+  <property name="fetchaudiominimum" value="5s" />
+
+  <catch event="error">
+    <submit method="post" namelist="token caller" next="Error.php"/>
+  </catch>
+  <catch event="connection.disconnect.hangup">
+    <submit method="post" namelist="token caller" next="Hangup.php"/>
+  </catch>
+  <var name="token" expr="'0'"/>
+  <var name="caller" expr="''"/>
+  <var name="called" expr="''"/>
+  <var name="next" expr="'0'"/>
+</vxml>
